@@ -10,7 +10,7 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-const defaultChannel = 'caseyneistat';
+const defaultChannel = 'techguyweb';
 
 // Load auth2 library
 function handleClientLoad() {
@@ -61,11 +61,13 @@ function handleSignoutClick(){
 
 // Get channel from API
 function getChannel(channel) {
-  gapi.client.youtube.channels.list({
-    part: 'snippet,contentDetails,statistics',
-    forUsername: channel
-  }).then(res => {
-    console.log(res);
-  })
+  gapi.client.youtube.channels
+    .list({
+      part: 'snippet,contentDetails,statistics',
+      forUsername: channel
+    })
+    .then(res => {
+      console.log(res);
+    })
     .catch(err => alert('No channel by that name'));
 }
